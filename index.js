@@ -4,7 +4,14 @@ import mongoose from 'mongoose';
 
 const app = express();
 const PORT = 4000;
-const db = mongoose();
+
+// Connect to MongoDB Database using Mongoose
+
+//mongoose.Promise = global.Promise
+mongoose.connect('mongodb://localhost/productsdb', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
 // bodyparser setup
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,7 +25,6 @@ app.listen(PORT, () =>
     console.log(`Your server is running on port ${PORT}`)
 );
 
-// Connect to MongoDB Database using Mongoose
-db.connect('mongodb://localhost:4000/productsdb', {useNewUrlParser: true}, {useUnifiedTopology: true});
+
 
 
